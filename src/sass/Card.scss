@@ -1,0 +1,128 @@
+$very-dark-blue: hsl(233, 47%, 7%);
+$dark-desaturated-blue: hsl(244, 38%, 16%);
+$soft-violet: hsl(277, 64%, 61%);
+$white: hsl(0, 0%, 100%); // main heading, stats
+$slightly-transparent-white-1: hsla(0, 0%, 100%, 0.75); // main paragraph
+$slightly-transparent-white-2: hsla(0, 0%, 100%, 0.6); // stat headings
+
+.card {
+  // max-width: 100rem;
+  width: clamp(15rem, 95%, 100rem);
+  margin: 0 auto;
+  background-color: $dark-desaturated-blue;
+  border-radius: 10px;
+  overflow: hidden;
+
+  .imageContainer {
+    background-image: url("../assets/image-header-mobile.jpg");
+    min-height: 35vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+  }
+
+  .imageContainer::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    min-height: 35vh;
+    background-color: #550081;
+    opacity: 0.5;
+  }
+
+  .contentContainer {
+    padding: 3rem 1.5rem;
+    text-align: center;
+
+    .info {
+      margin-bottom: 2.5rem;
+
+      .title {
+        font-size: 2.1rem;
+        color: $white;
+        margin-bottom: 1.5rem;
+        line-height: 1.3;
+
+        span {
+          color: $soft-violet;
+        }
+      }
+
+      .desc {
+        font-size: 1.2rem;
+        color: $slightly-transparent-white-2;
+        line-height: 1.5;
+        letter-spacing: 0.3px;
+        word-spacing: 0.4px;
+      }
+    }
+
+    .features {
+      display: flex;
+      flex-direction: column;
+      row-gap: 2rem;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        row-gap: 1rem;
+
+        span {
+          &:first-child {
+            color: $white;
+            font-size: 1.8rem;
+            font-weight: 600;
+          }
+
+          &:last-child {
+            color: $slightly-transparent-white-2;
+            letter-spacing: 1px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  html {
+    body {
+      .card {
+        display: flex;
+
+        flex-direction: row-reverse;
+        min-height: 55vh;
+
+        .imageContainer {
+          background-image: url("../assets/image-header-desktop.jpg");
+          width: 50%;
+        }
+
+        .imageContainer::after {
+          height: 100%;
+        }
+
+        .contentContainer {
+          padding: 3rem 7rem;
+          text-align: left;
+          width: 50%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          row-gap: 3rem;
+
+          .info {
+            .title {
+              font-size: 2.5rem;
+            }
+          }
+
+          .features {
+            flex-direction: row;
+            column-gap: 3rem;
+          }
+        }
+      }
+    }
+  }
+}
